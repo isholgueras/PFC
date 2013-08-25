@@ -1,0 +1,17 @@
+name = Straightedge
+
+description = A Drupal integration for Straightedge template.
+version = 7.0.1
+core = 7.x
+
+screenshot = screenshot.gif
+
+;required if not subtheme
+region[machine_name] = Readable Name
+region[header] = Header
+
+stylesheets[all][] = css/straightedge.css
+stylesheets[all][] = css/fonts.css
+stylesheets[all][] = css/custom.css
+
+features[] = logo
