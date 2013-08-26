@@ -1,0 +1,9 @@
+
+#logo span.title
+{
+    display: inline-block;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #FFF;
+}

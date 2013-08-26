@@ -334,19 +334,19 @@ ul.contact li a.icon-rss:before { background: #F2600B; }
     top: 0;
 }
 
-#menu ul
+#menu .content ul
 {
     display: inline-block;
 }
 
-#menu li
+#menu .content li
 {
     display: block;
     float: left;
     text-align: center;
 }
 
-#menu li a, #menu li span
+#menu .content li a, #menu .content li span
 {
     display: block;
     padding: 0em 1.5em;

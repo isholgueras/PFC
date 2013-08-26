@@ -6,9 +6,14 @@ core = 7.x
 
 screenshot = screenshot.gif
 
-;required if not subtheme
-region[machine_name] = Readable Name
-region[header] = Header
+regions[header] = Header
+regions[slideshow] = Slideshow
+regions[highlight] = Highlight
+regions[content] = Content
+regions[full_sidebar] = Full Sidebar
+regions[first_sidebar] = First Sidebar
+regions[second_sidebar] = Second Sidebar
+regions[footer] = Footer
 
 stylesheets[all][] = css/straightedge.css
 stylesheets[all][] = css/fonts.css
