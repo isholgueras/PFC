@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the PFC Noticias feature.
+ */
+
+include_once 'pfc_noticias.features.inc';

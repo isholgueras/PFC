@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function pfc_messages_menu() {
+
+  $items['messages'] = array(
+    'title' => t('Messages'),
+    'page callback' => 'pfc_messages_page',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+function pfc_messages_page() {
+  $items = db_select('pfc_messages', 'm')
+          ->fields('m', array('message', 'date'))
+          ->orderBy('date', 'DESC')
+          ->execute();
+  $output = '';
+  foreach ($items as $item) {
+    $output .= theme('pfc_messages_item', array('message' => $item->message,
+      'date' => $item->date));
+  }
+  return '<ul>' . $output . '</ul>';
+}
+
+function pfc_messages_theme() {
+  $theme = array(
+    'pfc_messages_item' => array(
+      'template' =>  '/theme/pfc-messages--item',
+      'variables' => array(
+        'message' => '',
+        'date' => '',
+      )
+    )
+  );
+  
+  return $theme;
+}
+
+function pfc_messages_form() {
+  $form['message'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Message'),
+  );
+
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Submit'),
+  );
+
+  return $form;
+}
+
+/**
+ * Implements hook_form_validate().
+ */
+function pfc_messages_form_validate(&$form, &$form_state) {
+  if (strlen($form_state['values']['message']) <= 3) {
+    form_set_error('messages', 'el campo debe de tener más de tres letras');
+  }
+}
+
+/**
+ * Implements hook_form_submit().
+ */
+function pfc_messages_form_submit(&$form, &$form_state) {
+  db_insert('pfc_messages')
+          ->fields(array(
+            'message' => $form_state['values']['message'],
+            'date' => REQUEST_TIME,
+          ))
+          ->execute();
+  drupal_set_message('Se ha guardado el mensaje: ' . $form_state['values']['message']);
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function pfc_messages_block_info() {
+  $blocks['messages_form'] = array(
+    'info' => t('Messages Form'),
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function pfc_messages_block_view($delta = '') {
+  $block = array();
+
+
+  switch ($delta) {
+    case 'messages_form':
+      $block['content'] = drupal_get_form('pfc_messages_form');
+      break;
+  }
+
+  return $block;
+}

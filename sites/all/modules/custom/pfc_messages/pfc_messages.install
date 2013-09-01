@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * Implements hook_schema().
+ */
+function pfc_messages_schema() {
+  $schema['pfc_messages'] = array(
+    'description' => 'TODO: please describe this table!',
+    'fields' => array(
+      'msgid' => array(
+        'description' => 'TODO: please describe this field!',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ),
+      'message' => array(
+        'description' => 'TODO: please describe this field!',
+        'type' => 'varchar',
+        'length' => '250',
+        'not null' => TRUE,
+      ),
+      'date' => array(
+        'description' => 'TODO: please describe this field!',
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('msgid'),
+    'unique keys' => array(
+      'msgid' => array('msgid')
+    ),
+  );
+  return $schema;
+}
+
+/**
+ * Implements hook_install().
+ */
+function pfc_messages_install() {
+  
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function pfc_messages_uninstall() {
+  
+}

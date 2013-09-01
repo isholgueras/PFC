@@ -1,0 +1,7 @@
+.two-col-teasered-wrapper .ds-top,
+.two-col-teasered-wrapper .ds-bottom,
+.two-col-teasered-wrapper .two-col-teasered-content{width:100%; float:left; clear:both;}
+.two-col-teasered-wrapper .ds-left{width:30%; float:left;}
+.two-col-teasered-wrapper .ds-left img{max-width: 95%;}
+.two-col-teasered-wrapper .ds-right{width:70%; float:left;}
+
