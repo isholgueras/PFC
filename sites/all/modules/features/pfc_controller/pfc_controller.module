@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the PFC Controller feature.
+ */
+
+include_once 'pfc_controller.features.inc';
