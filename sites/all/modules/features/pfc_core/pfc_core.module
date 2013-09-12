@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the PFC Core feature.
+ */
+
+include_once 'pfc_core.features.inc';

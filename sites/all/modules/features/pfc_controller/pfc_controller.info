@@ -34,7 +34,6 @@ dependencies[] = shortcut
 dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = text
-dependencies[] = toolbar
 dependencies[] = update
 dependencies[] = views
 dependencies[] = views_ui

@@ -1,0 +1,47 @@
+<?php
+  class PFCMessagesUnitTestCase extends DrupalWebTestCase {
+    protected $privileged_user;
+
+
+    public static function getInfo() {
+      // Note: getInfo() strings should not be translated.
+      return array(
+        'name' => 'PFC Messages unit tests',
+        'description' => 'test that insert messages properly in the database.',
+        'group' => 'PFC',
+      );
+    }
+    
+    public function setUp() {
+      // Enable any modules required for the test. This should be an array of
+      // module names.
+      $this->profile = 'PFC';
+      parent::setUp('block','color','comment','context','context_ui','contextual','ctools','dashboard','dblog','ds','features','field_u','file','filter','help','image','list','menu','number','options','overlay','path','pfc_messages','pfc_noticias','rf','search','shortcut','strongarm','taxonomy','text','update','views','views_ui','pfc_controller', 'pfc_core', 'pfc_messages');
+      // Create and log in our privileged user.
+      $this->privileged_user = $this->drupalCreateUser(array(
+        'access content',
+        ));
+      $this->drupalLogin($this->privileged_user);
+    }
+    
+    public function testPFCMessagesFormVerificationFails() {
+      // Create node to edit.    
+      $edit = array();
+      // Generate a random text with length of 2 (less than 3)
+      $edit["message"] = $this->randomName(2);
+      // Navigate to /messages page and send the form.
+      $this->drupalPost('messages', $edit, t('Save'));
+      // Assert that the message is our message
+      $this->assertText('el campo debe de tener más de tres letras');
+    }
+    
+    public function testPFCMessagesFormSubmit() {
+      // Create node to edit.    
+      $edit = array();
+      // Generate a random text with length of 16 (more than 3)
+      $edit["message"] = $this->randomName(16);
+      $this->drupalPost('messages', $edit, t('Save'));
+      $this->assertText('Se ha guardado el mensaje: ' . $edit['message']);
+    }
+  }
+?>

@@ -1,0 +1,11 @@
+name = PFC Core
+description = Core functionality
+core = 7.x
+package = PFC
+dependencies[] = context
+dependencies[] = pfc_messages
+dependencies[] = pfc_noticias
+dependencies[] = pfc_controller
+features[context][] = messages
+features[ctools][] = context:context:3
+features[features_api][] = api:2

@@ -2,4 +2,5 @@ name = PFC
 description = Profile de demostración para el PFC.
 version = 7.x-0.1-dev
 core = 7.x
+
 dependencies[] = pfc_controller

@@ -2,3 +2,5 @@ name = PFC Messages
 description = "Provee una funcionalidad de envio de mensajes para mostrarlos en una página"
 package = PFC
 core = 7.x
+
+files[] = tests/pfc_messages.test
